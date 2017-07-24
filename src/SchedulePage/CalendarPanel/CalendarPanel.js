@@ -33,7 +33,7 @@ export default class CalendarPanel extends Component {
               <td className="other-month">29</td>
               <td className="other-month">30</td>
               <td className="other-month">31</td>
-              <td className="today">1</td>
+              <td className="highlighted today">1</td>
               <td className="busy">2</td>
               <td>3</td>
             </tr>
@@ -60,7 +60,7 @@ export default class CalendarPanel extends Component {
               <td>19</td>
               <td>20</td>
               <td className="busy">21</td>
-              <td className="busy">22</td>
+              <td className="highlighted selected busy">22</td>
               <td>23</td>
               <td>24</td>
             </tr>

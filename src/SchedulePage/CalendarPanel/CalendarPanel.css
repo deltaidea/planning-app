@@ -36,11 +36,7 @@
   color: rgba(0, 0, 0, 0.3);
 }
 
-.calendar .today {
-  color: white;
-}
-
-.calendar .today:before {
+.calendar .highlighted:before {
   position: absolute;
   /* Forces the `:before` background to stack under the `td`. */
   z-index: -1;
@@ -54,6 +50,18 @@
   margin-top: -13px;
   background-color: #f6cf31;
   border-radius: 50%;
+}
+
+.calendar .today {
+  color: white;
+}
+
+.calendar .today:before {
+  background-color: #f6cf31;
+}
+
+.calendar .selected:before {
+  background-color: rgba(0, 0, 0, 0.12);
 }
 
 .calendar .busy:after {
