@@ -1,0 +1,71 @@
+.calendar-container {
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.calendar-container .month-selection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.calendar-container .month-selection .current-month {
+  margin: 0 35px;
+  opacity: 0.69;
+}
+
+.calendar {
+  /* Makes row borders styleable. See `thead` border below. */
+  border-collapse: collapse;
+}
+
+.calendar thead tr {
+  font-size: 12px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  opacity: 0.64;
+}
+
+.calendar td {
+  position: relative;
+  width: 40px;
+  height: 35px;
+}
+
+.calendar .other-month {
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.calendar .today {
+  color: white;
+}
+
+.calendar .today:before {
+  position: absolute;
+  /* Forces the `:before` background to stack under the `td`. */
+  z-index: -1;
+  content: ' ';
+  display: inline-block;
+  left: 50%;
+  top: 50%;
+  width: 24px;
+  height: 24px;
+  margin-left: -12px;
+  margin-top: -13px;
+  background-color: #f6cf31;
+  border-radius: 50%;
+}
+
+.calendar .busy:after {
+  position: absolute;
+  content: ' ';
+  display: inline-block;
+  left: 50%;
+  top: 90%;
+  width: 4px;
+  height: 4px;
+  margin-left: -2px;
+  opacity: 0.7;
+  background-color: #00b43a;
+  border-radius: 50%;
+}
