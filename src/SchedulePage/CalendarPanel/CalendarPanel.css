@@ -7,7 +7,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 20px 0;
+  margin-bottom: 10px;
 }
 
 .calendar-container .month-selection .current-month {
@@ -28,8 +28,8 @@
 
 .calendar td {
   position: relative;
-  width: 40px;
-  height: 35px;
+  width: 41px;
+  height: 38px;
 }
 
 .calendar .other-month {
@@ -61,7 +61,7 @@
   content: ' ';
   display: inline-block;
   left: 50%;
-  top: 90%;
+  top: 80%;
   width: 4px;
   height: 4px;
   margin-left: -2px;
