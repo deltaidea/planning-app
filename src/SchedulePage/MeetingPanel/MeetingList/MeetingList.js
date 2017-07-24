@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
-export default class NewMeetingContainer extends Component {
+export default class EditMeeting extends Component {
   render() {
     return (
       <div>
-          Add a new meeting
+        Meeting list
       </div>
     );
   }

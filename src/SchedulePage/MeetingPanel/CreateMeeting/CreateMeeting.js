@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
-export default class MeetingListContainer extends Component {
+export default class CreateMeeting extends Component {
   render() {
     return (
       <div>
-          Meetings for the day
+        New meeting
       </div>
     );
   }
