@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom'
+
 import './SideMenu.css';
-
 import photoUrl from './profile-photo.png';
-
 import iconSettings from './icon-settings.png';
 import iconUpload from './icon-upload.png';
 import iconSchedule from './icon-schedule.png';
@@ -22,15 +22,15 @@ export class SideMenu extends Component {
           </div>
         </div>
         <div className="navigation">
-          <div className="navigation-item active">
+          <NavLink className="navigation-item" activeClassName="active" to="/meetings">
             <img src={iconSchedule} className="icon"/>
             <span className="name">Schedule</span>
             <span className="counter">8</span>
-          </div>
-          <div className="navigation-item">
+          </NavLink>
+          <NavLink className="navigation-item" activeClassName="active" to="/clients">
             <img src={iconClient} className="icon"/>
             <span className="name">My clients</span>
-          </div>
+          </NavLink>
         </div>
       </div>
     );

@@ -13,7 +13,7 @@ export default class App extends Component {
       <div className="app">
         <SideMenu/>
         <div className="content">
-          <Route exact path="/" render={() => <Redirect to="/meetings/2016-09-22"/>}/>
+          <Route exact path="/" render={() => <Redirect to="/meetings"/>}/>
           <Route path="/clients" component={ClientPage}/>
           <Route path="/meetings" component={SchedulePage}/>
         </div>
