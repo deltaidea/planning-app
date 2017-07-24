@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Route, Redirect } from 'react-router';
 
+import './App.css';
+
+import { SideMenuContainer } from './side-menu/SideMenuContainer';
 import { ClientListContainer } from './clients/ClientListContainer';
 import { CalendarPageContainer } from './meetings/CalendarPageContainer';
 import { MeetingPanelContainer } from './meetings/MeetingPanelContainer';
@@ -11,7 +14,8 @@ import { EditMeetingContainer } from './meetings/EditMeetingContainer';
 export class App extends Component {
   render() {
     return (
-      <Route path="/" component={App}>
+      <div className="app">
+        <SideMenuContainer/>
         <Route exact path="/" render={() => <Redirect to="/meetings/2016-09-22"/>}/>
         <Route path="/clients" component={ClientListContainer}/>
         <Route path="/meetings" component={CalendarPageContainer}>
@@ -21,7 +25,7 @@ export class App extends Component {
             <Route path="/:id" component={EditMeetingContainer}/>
           </Route>
         </Route>
-      </Route>
+      </div>
     );
   }
 }
