@@ -6,7 +6,7 @@ import createHistory from 'history/createBrowserHistory';
 import { ConnectedRouter, routerReducer, routerMiddleware } from 'react-router-redux';
 
 import './index.css';
-import { App } from './App';
+import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
 const history = createHistory();

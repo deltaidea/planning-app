@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { ClientList } from './ClientList';
 
-export class ClientListContainer extends Component {
+export default class ClientPageContainer extends Component {
   render() {
     return (
       <ClientList/>
