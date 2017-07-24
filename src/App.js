@@ -16,15 +16,17 @@ export class App extends Component {
     return (
       <div className="app">
         <SideMenuContainer/>
-        <Route exact path="/" render={() => <Redirect to="/meetings/2016-09-22"/>}/>
-        <Route path="/clients" component={ClientListContainer}/>
-        <Route path="/meetings" component={CalendarPageContainer}>
-          <Route path="/:date" component={MeetingPanelContainer}>
-            <Route exact path="/" component={MeetingListContainer}/>
-            <Route path="/new" component={NewMeetingContainer}/>
-            <Route path="/:id" component={EditMeetingContainer}/>
+        <div className="content">
+          <Route exact path="/" render={() => <Redirect to="/meetings/2016-09-22"/>}/>
+          <Route path="/clients" component={ClientListContainer}/>
+          <Route path="/meetings" component={CalendarPageContainer}>
+            <Route path="/:date" component={MeetingPanelContainer}>
+              <Route exact path="/" component={MeetingListContainer}/>
+              <Route path="/new" component={NewMeetingContainer}/>
+              <Route path="/:id" component={EditMeetingContainer}/>
+            </Route>
           </Route>
-        </Route>
+        </div>
       </div>
     );
   }

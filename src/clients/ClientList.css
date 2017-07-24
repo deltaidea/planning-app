@@ -1,0 +1,18 @@
+.client-list {
+  color: rgba(0, 0, 0, 0.64);
+}
+
+.client-list .header {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.client-list .section-header {
+  font-weight: bold;
+  margin-top: 25px;
+  margin-bottom: 15px;
+}
+
+.client-list .client {
+  margin-bottom: 13px;
+}

@@ -3,4 +3,10 @@
   flex: 1;
   font-family: 'Roboto';
   font-size: 14px;
+  letter-spacing: 0.07px;
+}
+
+.app .content {
+  padding-top: 28px;
+  padding-left: 30px;
 }
