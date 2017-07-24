@@ -1,21 +1,27 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Route, Redirect } from 'react-router';
 
-class App extends Component {
+import { ClientListContainer } from './clients/ClientListContainer';
+import { CalendarPageContainer } from './meetings/CalendarPageContainer';
+import { MeetingPanelContainer } from './meetings/MeetingPanelContainer';
+import { MeetingListContainer } from './meetings/MeetingListContainer';
+import { NewMeetingContainer } from './meetings/NewMeetingContainer';
+import { EditMeetingContainer } from './meetings/EditMeetingContainer';
+
+export class App extends Component {
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <Route path="/" component={App}>
+        <Route exact path="/" render={() => <Redirect to="/meetings/2016-09-22"/>}/>
+        <Route path="/clients" component={ClientListContainer}/>
+        <Route path="/meetings" component={CalendarPageContainer}>
+          <Route path="/:date" component={MeetingPanelContainer}>
+            <Route exact path="/" component={MeetingListContainer}/>
+            <Route path="/new" component={NewMeetingContainer}/>
+            <Route path="/:id" component={EditMeetingContainer}/>
+          </Route>
+        </Route>
+      </Route>
     );
   }
 }
-
-export default App;
