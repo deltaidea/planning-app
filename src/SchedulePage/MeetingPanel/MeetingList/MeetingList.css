@@ -1,0 +1,51 @@
+.meeting-list-container .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 10px;
+}
+
+.meeting-list-container .header .date {
+  color: rgba(0,0,0,0.64);
+  font-size: 18px;
+}
+
+.meeting-list-container .header .button-create {
+  padding: 5px 15px;
+  border: none;
+  background-color: #f6cf31;
+  color: white;
+  border-radius: 33px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.meeting-list .item {
+  margin: 25px 0;
+}
+
+.meeting-list .item .title-row {
+  display: flex;
+}
+
+.meeting-list .item .title {
+  flex: 1;
+}
+
+.meeting-list .item .icon {
+  margin-left: 25px;
+  margin-right: 4px;
+}
+
+/* Apparently, these icons are not the right size and aspect ratio in the spec. */
+.meeting-list .item .icon.edit { width: 14px; height: 14px; }
+.meeting-list .item .icon.delete { width: 12px; height: 16px; }
+
+.participant span {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 2px 10px;
+  color: white;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+}
