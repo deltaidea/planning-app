@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import { withRouter } from 'react-router';
+
+import { connect } from 'react-redux';
 import { SideMenu } from './SideMenu';
 
-export default class SideMenuContainer extends Component {
-  render() {
-    return (
-      <SideMenu/>
-    );
-  }
-}
+const mapStateToProps = state => ({
+  meetingsCount: state.meetings.length
+});
+
+export default withRouter(connect(mapStateToProps)(SideMenu));

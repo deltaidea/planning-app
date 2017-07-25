@@ -1,10 +1,8 @@
-import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { ClientList } from './ClientList';
 
-export default class ClientPageContainer extends Component {
-  render() {
-    return (
-      <ClientList/>
-    );
-  }
-}
+const mapStateToProps = state => ({
+  clients: state.clients
+});
+
+export default connect(mapStateToProps)(ClientList);

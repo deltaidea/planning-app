@@ -1,18 +1,87 @@
 import React, { Component } from 'react';
+import classNames from 'classnames';
+import moment from 'moment';
 
 import './CalendarPanel.css';
-
 import iconArrowLeft from './icon-arrow-left.png'
 import iconArrowRight from './icon-arrow-right.png'
 
+const parseDate = date => moment(date, 'YYYY-MM-DD');
+const formatMoment = date => date.format('YYYY-MM-DD');
+
 export default class CalendarPanel extends Component {
+  goToDate(date) {
+    return () => {
+      this.props.history.push('/meetings/' + date);
+    };
+  }
+
+  getOtherMonth(direction) {
+    const addOrSubtract = (direction === -1) ? 'subtract' : 'add';
+    return formatMoment(parseDate(this.getDate())[addOrSubtract](1, 'month'));
+  }
+
+  getDate() {
+    return this.props.location.pathname.split('/').pop();
+  }
+
+  getTodayDate() {
+    return formatMoment(moment());
+  }
+
+  getMonthBoundaries(date) {
+    return {
+      start: parseDate(date).startOf('month').startOf('week'),
+      end: parseDate(date).startOf('month').startOf('week').add(6, 'week')
+    };
+  }
+
+  renderDay(day) {
+    return (
+      <td onClick={this.goToDate(formatMoment(day))} className={classNames({
+        'busy': this.props.meetings.some(x => x.date === formatMoment(day)),
+        'highlighted today': this.getTodayDate() === formatMoment(day),
+        'highlighted selected': this.getDate() === formatMoment(day),
+        'other-month': parseDate(this.getDate()).month() !== day.month()
+      })}>{day.date()}</td>
+    );
+  }
+
+  renderWeek(monday) {
+    return (
+      <tr key={formatMoment(monday)}>
+        {this.renderDay(monday)}
+        {this.renderDay(monday.clone().add(1, 'day'))}
+        {this.renderDay(monday.clone().add(2, 'day'))}
+        {this.renderDay(monday.clone().add(3, 'day'))}
+        {this.renderDay(monday.clone().add(4, 'day'))}
+        {this.renderDay(monday.clone().add(5, 'day'))}
+        {this.renderDay(monday.clone().add(6, 'day'))}
+      </tr>
+    );
+  }
+
+  renderAllWeeks(boundaries) {
+    const rows = [];
+    let curMonday = boundaries.start.clone();
+
+    while (curMonday.isBefore(boundaries.end)) {
+      rows.push(this.renderWeek(curMonday));
+      curMonday = curMonday.add(7, 'days');
+    }
+
+    return rows;
+  }
+
   render() {
+    const boundaries = this.getMonthBoundaries(this.getDate());
+
     return (
       <div className="calendar-container">
         <div className="month-selection">
-          <img src={iconArrowLeft} className="arrow"/>
-          <span className="current-month">sep 2016</span>
-          <img src={iconArrowRight} className="arrow"/>
+          <img src={iconArrowLeft} onClick={this.goToDate(this.getOtherMonth(-1))} className="arrow"/>
+          <span className="current-month">{parseDate(this.getDate()).format('MMM YYYY')}</span>
+          <img src={iconArrowRight} onClick={this.goToDate(this.getOtherMonth(1))} className="arrow"/>
         </div>
 
         <table className="calendar">
@@ -28,60 +97,7 @@ export default class CalendarPanel extends Component {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td className="other-month">28</td>
-              <td className="other-month">29</td>
-              <td className="other-month">30</td>
-              <td className="other-month">31</td>
-              <td className="highlighted today">1</td>
-              <td className="busy">2</td>
-              <td>3</td>
-            </tr>
-            <tr>
-              <td>4</td>
-              <td>5</td>
-              <td>6</td>
-              <td className="busy">7</td>
-              <td>8</td>
-              <td className="busy">9</td>
-              <td>10</td>
-            </tr>
-            <tr>
-              <td>11</td>
-              <td className="busy">12</td>
-              <td>13</td>
-              <td>14</td>
-              <td>15</td>
-              <td>16</td>
-              <td>17</td>
-            </tr>
-            <tr>
-              <td>18</td>
-              <td>19</td>
-              <td>20</td>
-              <td className="busy">21</td>
-              <td className="highlighted selected busy">22</td>
-              <td>23</td>
-              <td>24</td>
-            </tr>
-            <tr>
-              <td>25</td>
-              <td>26</td>
-              <td>27</td>
-              <td>28</td>
-              <td>29</td>
-              <td>30</td>
-              <td className="other-month">1</td>
-            </tr>
-            <tr>
-              <td className="other-month">2</td>
-              <td className="other-month">3</td>
-              <td className="other-month">4</td>
-              <td className="other-month">5</td>
-              <td className="other-month">6</td>
-              <td className="other-month">7</td>
-              <td className="other-month">8</td>
-            </tr>
+            {this.renderAllWeeks(boundaries)}
           </tbody>
         </table>
       </div>

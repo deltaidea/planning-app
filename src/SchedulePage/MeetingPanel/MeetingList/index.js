@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import MeetingList from './MeetingList';
 
-export default class MeetingListContainer extends Component {
-  render() {
-    return (
-      <MeetingList/>
-    );
-  }
-}
+const mapStateToProps = state => ({
+  clients: state.clients,
+  meetings: state.meetings
+});
+
+export default connect(mapStateToProps)(MeetingList);
