@@ -22,7 +22,7 @@ export class SideMenu extends Component {
           </div>
         </div>
         <div className="navigation">
-          <NavLink className="navigation-item" activeClassName="active" to="/meetings">
+          <NavLink className="navigation-item" activeClassName="active" to={`/meetings/${this.props.selectedDate}`}>
             <img src={iconSchedule} className="icon"/>
             <span className="name">Schedule</span>
             <span className="counter">{this.props.meetingsCount}</span>

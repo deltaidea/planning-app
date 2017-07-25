@@ -1,32 +1,23 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
-import moment from 'moment';
+import { parseDate, formatMoment } from '../../redux/calendar';
 
 import './CalendarPanel.css';
 import iconArrowLeft from './icon-arrow-left.png'
 import iconArrowRight from './icon-arrow-right.png'
 
-const parseDate = date => moment(date, 'YYYY-MM-DD');
-const formatMoment = date => date.format('YYYY-MM-DD');
-
 export default class CalendarPanel extends Component {
-  goToDate(date) {
-    return () => {
-      this.props.history.push('/meetings/' + date);
-    };
-  }
-
   getOtherMonth(direction) {
     const addOrSubtract = (direction === -1) ? 'subtract' : 'add';
-    return formatMoment(parseDate(this.getDate())[addOrSubtract](1, 'month'));
+    return parseDate(this.getDate())[addOrSubtract](1, 'month');
   }
 
   getDate() {
-    return this.props.location.pathname.split('/').pop();
+    return this.props.calendar.selectedDate;
   }
 
   getTodayDate() {
-    return formatMoment(moment());
+    return this.props.calendar.todayDate;
   }
 
   getMonthBoundaries(date) {
@@ -38,7 +29,7 @@ export default class CalendarPanel extends Component {
 
   renderDay(day) {
     return (
-      <td onClick={this.goToDate(formatMoment(day))} className={classNames({
+      <td onClick={() => this.props.goToDate(day)} className={classNames({
         'busy': this.props.meetings.some(x => x.date === formatMoment(day)),
         'highlighted today': this.getTodayDate() === formatMoment(day),
         'highlighted selected': this.getDate() === formatMoment(day),
@@ -79,9 +70,9 @@ export default class CalendarPanel extends Component {
     return (
       <div className="calendar-container">
         <div className="month-selection">
-          <img src={iconArrowLeft} onClick={this.goToDate(this.getOtherMonth(-1))} className="arrow"/>
+          <img src={iconArrowLeft} onClick={() => this.props.goToDate(this.getOtherMonth(-1))} className="arrow"/>
           <span className="current-month">{parseDate(this.getDate()).format('MMM YYYY')}</span>
-          <img src={iconArrowRight} onClick={this.goToDate(this.getOtherMonth(1))} className="arrow"/>
+          <img src={iconArrowRight} onClick={() => this.props.goToDate(this.getOtherMonth(1))} className="arrow"/>
         </div>
 
         <table className="calendar">
