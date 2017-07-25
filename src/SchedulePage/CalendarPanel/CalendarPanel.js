@@ -41,7 +41,7 @@ export default class CalendarPanel extends Component {
   renderWeek(monday) {
     return (
       <tr key={formatMoment(monday)}>
-        {this.renderDay(monday)}
+        {this.renderDay(monday.clone())}
         {this.renderDay(monday.clone().add(1, 'day'))}
         {this.renderDay(monday.clone().add(2, 'day'))}
         {this.renderDay(monday.clone().add(3, 'day'))}
