@@ -4,25 +4,28 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import createHistory from 'history/createBrowserHistory';
 import { ConnectedRouter, routerReducer, routerMiddleware } from 'react-router-redux';
-import { createLogger } from 'redux-logger'
+import { createLogger } from 'redux-logger';
 
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import { reducers } from './redux';
 
-const history = createHistory();
+// Web worker that provides cache of assets. Thanks, react-create-app.
+registerServiceWorker();
 
-const logger = createLogger({
+// Hook into HTML5 history.
+const history = createHistory();
+const historyMiddleware = routerMiddleware(history);
+
+// Log all actions to console for convenience.
+const loggerMiddleware = createLogger({
   collapsed: true
 });
 
 const store = createStore(
-  combineReducers({
-    ...reducers,
-    router: routerReducer
-  }),
-  applyMiddleware(routerMiddleware(history), logger)
+  combineReducers({ ...reducers, router: routerReducer }),
+  applyMiddleware(historyMiddleware, loggerMiddleware)
 );
 
 render(
@@ -33,5 +36,3 @@ render(
   </Provider>,
   document.getElementById('root')
 );
-
-registerServiceWorker();
