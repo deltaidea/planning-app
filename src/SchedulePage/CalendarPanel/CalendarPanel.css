@@ -10,6 +10,10 @@
   margin-bottom: 10px;
 }
 
+.calendar-container .month-selection .arrow {
+  cursor: pointer;
+}
+
 .calendar-container .month-selection .current-month {
   margin: 0 35px;
   opacity: 0.69;
@@ -30,6 +34,10 @@
   position: relative;
   width: 41px;
   height: 38px;
+}
+
+.calendar tbody td {
+  cursor: pointer;
 }
 
 .calendar .other-month {
