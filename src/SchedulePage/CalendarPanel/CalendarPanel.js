@@ -70,9 +70,9 @@ export default class CalendarPanel extends Component {
     return (
       <div className="calendar-container">
         <div className="month-selection">
-          <img src={iconArrowLeft} onClick={() => this.props.goToDate(this.getOtherMonth(-1))} className="arrow"/>
+          <img src={iconArrowLeft} onClick={() => this.props.goToDate(this.getOtherMonth(-1))} className="arrow" alt="Previous month"/>
           <span className="current-month">{parseDate(this.getDate()).format('MMM YYYY')}</span>
-          <img src={iconArrowRight} onClick={() => this.props.goToDate(this.getOtherMonth(1))} className="arrow"/>
+          <img src={iconArrowRight} onClick={() => this.props.goToDate(this.getOtherMonth(1))} className="arrow" alt="Next month"/>
         </div>
 
         <table className="calendar">

@@ -28,8 +28,8 @@ export default class MeetingList extends Component {
             <div key={meeting.id} className="item">
               <div className="title-row">
                 <span className="title">{meeting.title}</span>
-                <img src={iconEdit} className="icon edit"/>
-                <img src={iconDelete} className="icon delete"/>
+                <img src={iconEdit} className="icon edit" alt="Edit"/>
+                <img src={iconDelete} className="icon delete" alt="Delete"/>
               </div>
               <div className="participant">
                 <span>{this.getParticipant(meeting.participantId).name}</span>
