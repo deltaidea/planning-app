@@ -8,7 +8,7 @@
       "type": "image/png"
     }
   ],
-  "homepage": "https://deltaidea.github.io/planning-app/",
+  "homepage": "https://deltaidea.github.io/planning-app",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"
