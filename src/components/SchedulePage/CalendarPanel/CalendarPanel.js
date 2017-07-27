@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
-import { parseDate, formatMoment, getTodayDate } from '../../redux/calendar';
+import { parseDate, formatMoment, getTodayDate } from '../../../redux/calendar';
 import { ContentPanel } from '../../ContentPanel';
 
 import './CalendarPanel.css';

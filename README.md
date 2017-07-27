@@ -18,9 +18,8 @@ The app is written in plain JavaScript and CSS on top of bare [create-react-app]
 
 Directory structure inside [`src`](src) is a bit unorthodox but fairly intuitive, given the small scope of the project:
 
-- [`index.js`](src/index.js) is the container component for [`App.js`](src/App.js).
 - [`redux/`](src/redux) contains files with reducers and actions combined, because there aren't many of them.
-- High-level components ([`SchedulePage`](src/SchedulePage), etc.) have nested structure to avoid bloating `src/`.
+- High-level components ([`SchedulePage`](src/components/SchedulePage), etc.) have nested structure to avoid bloating `src/components/`.
 - Container components are named `index.js` in their respective folders to simplify `import`s.
 
 ## License

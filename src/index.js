@@ -8,7 +8,7 @@ import { createLogger } from 'redux-logger';
 import persistState from 'redux-localstorage';
 
 import './index.css';
-import App from './App';
+import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
 import { reducers } from './redux';
 

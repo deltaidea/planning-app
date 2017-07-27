@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import CalendarPanel from './CalendarPanel';
-import { formatMoment } from '../../redux/calendar';
+import { formatMoment } from '../../../redux/calendar';
 
 const mapStateToProps = (state, props) => ({
   calendar: state.calendar,

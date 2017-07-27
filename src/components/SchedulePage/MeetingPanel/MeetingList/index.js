@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import MeetingList from './MeetingList';
-import { deleteMeeting } from '../../../redux/meetings';
+import { deleteMeeting } from '../../../../redux/meetings';
 
 const mapStateToProps = state => ({
   selectedDate: state.calendar.selectedDate,
