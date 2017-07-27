@@ -1,8 +1,8 @@
 import uuid from 'uuid/v4';
 
 const initialState = [
-  { id: 0, date: '2016-09-22', title: 'Scheduling a meeting time shouldn\'t be hard', participantId: 4 },
-  { id: 1, date: '2016-09-22', title: 'Democratic way to coordinate', participantId: 1 }
+  { id: '0', date: '2016-09-22', description: 'Scheduling a meeting time shouldn\'t be hard', participantId: '4' },
+  { id: '1', date: '2016-09-22', description: 'Democratic way to coordinate', participantId: '1' }
 ];
 
 const MEETING_CREATED = 'MEETING_CREATED';
@@ -21,17 +21,17 @@ export function reducer(meetings, action) {
   return meetings;
 }
 
-export function createMeeting(date, title, participantId) {
+export function createMeeting(date, description, participantId) {
   return {
     type: MEETING_CREATED,
-    payload: { id: uuid(), date, title, participantId }
+    payload: { id: uuid(), date, description, participantId }
   };
 }
 
-export function editMeeting(id, newDate, newTitle, newParticipantId) {
+export function editMeeting(id, newDate, newDescription, newParticipantId) {
   return {
-    type: MEETING_CREATED,
-    payload: { id, date: newDate, title: newTitle, participantId: newParticipantId }
+    type: MEETING_EDITED,
+    payload: { id, date: newDate, description: newDescription, participantId: newParticipantId }
   };
 }
 

@@ -1,5 +1,4 @@
 import { withRouter } from 'react-router';
-
 import { connect } from 'react-redux';
 import { SideMenu } from './SideMenu';
 

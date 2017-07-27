@@ -13,7 +13,6 @@
 .meeting-list .item .icon {
   margin-left: 25px;
   margin-right: 4px;
-  cursor: pointer;
 }
 
 /* Apparently, these icons are not the right size and aspect ratio in the spec. */

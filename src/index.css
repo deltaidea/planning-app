@@ -12,6 +12,10 @@ body {
   letter-spacing: 0.07px;;
 }
 
+input, textarea {
+  font-family: 'Roboto';
+}
+
 #root {
   display: flex;
   flex: 1;
