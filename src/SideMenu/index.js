@@ -4,8 +4,7 @@ import { connect } from 'react-redux';
 import { SideMenu } from './SideMenu';
 
 const mapStateToProps = state => ({
-  meetingsCount: state.meetings.length,
-  selectedDate: state.calendar.selectedDate
+  meetingsCount: state.meetings.length
 });
 
 export default withRouter(connect(mapStateToProps)(SideMenu));

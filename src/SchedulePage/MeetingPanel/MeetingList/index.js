@@ -1,9 +1,15 @@
 import { connect } from 'react-redux';
 import MeetingList from './MeetingList';
+import { deleteMeeting } from '../../../redux/meetings';
 
 const mapStateToProps = state => ({
+  selectedDate: state.calendar.selectedDate,
   clients: state.clients,
   meetings: state.meetings
 });
 
-export default connect(mapStateToProps)(MeetingList);
+const mapDispatchToProps = dispatch => ({
+  deleteMeeting: id => dispatch(deleteMeeting(id))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(MeetingList);

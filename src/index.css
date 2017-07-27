@@ -7,6 +7,9 @@ body {
   min-height: 100%;
   margin: 0;
   padding: 0;
+  font-family: 'Roboto';
+  font-size: 14px;
+  letter-spacing: 0.07px;;
 }
 
 #root {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
 import { parseDate, formatMoment, getTodayDate } from '../../redux/calendar';
+import { ContentPanel } from '../../ContentPanel';
 
 import './CalendarPanel.css';
 import iconArrowLeft from './icon-arrow-left.png'
@@ -64,30 +65,31 @@ export default class CalendarPanel extends Component {
     const boundaries = this.getMonthBoundaries(this.getDate());
 
     return (
-      <div className="calendar-container">
-        <div className="month-selection">
-          <img src={iconArrowLeft} onClick={() => this.props.goToDate(this.getOtherMonth(-1))} className="arrow" alt="Previous month"/>
-          <span className="current-month">{parseDate(this.getDate()).format('MMM YYYY')}</span>
-          <img src={iconArrowRight} onClick={() => this.props.goToDate(this.getOtherMonth(1))} className="arrow" alt="Next month"/>
+      <ContentPanel>
+        <div className="calendar-container">
+          <div className="month-selection">
+            <img src={iconArrowLeft} onClick={() => this.props.goToDate(this.getOtherMonth(-1))} className="arrow" alt="Previous month"/>
+            <span className="current-month">{parseDate(this.getDate()).format('MMM YYYY')}</span>
+            <img src={iconArrowRight} onClick={() => this.props.goToDate(this.getOtherMonth(1))} className="arrow" alt="Next month"/>
+          </div>
+          <table className="calendar">
+            <thead>
+              <tr>
+                <td>mon</td>
+                <td>tue</td>
+                <td>wed</td>
+                <td>thu</td>
+                <td>fri</td>
+                <td>sat</td>
+                <td>sun</td>
+              </tr>
+            </thead>
+            <tbody>
+              {this.renderAllWeeks(boundaries)}
+            </tbody>
+          </table>
         </div>
-
-        <table className="calendar">
-          <thead>
-            <tr>
-              <td>mon</td>
-              <td>tue</td>
-              <td>wed</td>
-              <td>thu</td>
-              <td>fri</td>
-              <td>sat</td>
-              <td>sun</td>
-            </tr>
-          </thead>
-          <tbody>
-            {this.renderAllWeeks(boundaries)}
-          </tbody>
-        </table>
-      </div>
+      </ContentPanel>
     );
   }
 }

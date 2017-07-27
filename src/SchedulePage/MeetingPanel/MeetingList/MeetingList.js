@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { ContentPanel, PanelHeader, PanelContent } from '../../../ContentPanel';
+import { PrimaryButton } from '../../../Button';
+import BleedContainer from '../../../BleedContainer';
 
 import './MeetingList.css';
 
@@ -10,36 +14,42 @@ export default class MeetingList extends Component {
     return this.props.clients.find(x => x.id === id);
   }
 
-  getDate() {
-    return this.props.location.pathname.split('/').pop();
+  getEditUrl(id) {
+    return `/meetings/${this.props.selectedDate}/${id}`;
+  }
+
+  getCreateUrl() {
+    return `/meetings/${this.props.selectedDate}/new`;
   }
 
   render() {
-    const dayMeetings =this.props.meetings.filter(x => x.date === this.getDate());
+    const dayMeetings =this.props.meetings.filter(x => x.date === this.props.selectedDate);
 
     return (
-      <div className="meeting-list-container">
-        <div className="header">
-          <span className="date">September 22</span>
-          <button className="button-create">Create</button>
-        </div>
-        <div className="meeting-list">
-          {dayMeetings.length ? dayMeetings.map(meeting => (
-            <div key={meeting.id} className="item">
-              <div className="title-row">
-                <span className="title">{meeting.title}</span>
-                <img src={iconEdit} className="icon edit" alt="Edit"/>
-                <img src={iconDelete} className="icon delete" alt="Delete"/>
+      <BleedContainer className="meeting-list">
+        <ContentPanel>
+          <PanelHeader>
+            <span>September 22</span>
+            <PrimaryButton to={this.getCreateUrl()}>Create</PrimaryButton>
+          </PanelHeader>
+          <PanelContent>
+            {dayMeetings.length ? dayMeetings.map(meeting => (
+              <div key={meeting.id} className="item">
+                <div className="title-row">
+                  <span className="title">{meeting.title}</span>
+                  <Link to={this.getEditUrl(meeting.id)}><img src={iconEdit} className="icon edit" alt="Edit"/></Link>
+                  <img onClick={() => this.props.deleteMeeting(meeting.id)} src={iconDelete} className="icon delete" alt="Delete"/>
+                </div>
+                <div className="participant">
+                  <span>{this.getParticipant(meeting.participantId).name}</span>
+                </div>
               </div>
-              <div className="participant">
-                <span>{this.getParticipant(meeting.participantId).name}</span>
-              </div>
-            </div>
-          )) : (
-            <div className="empty-list">Nothing planned</div>
-          )}
-        </div>
-      </div>
+            )) : (
+              <div className="empty-list">Nothing planned</div>
+            )}
+          </PanelContent>
+        </ContentPanel>
+      </BleedContainer>
     );
   }
 }

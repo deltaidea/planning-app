@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom';
 
 import './SideMenu.css';
 import photoUrl from './profile-photo.png';
@@ -22,7 +22,7 @@ export class SideMenu extends Component {
           </div>
         </div>
         <div className="navigation">
-          <NavLink className="navigation-item" activeClassName="active" to={`/meetings/${this.props.selectedDate}`}>
+          <NavLink className="navigation-item" activeClassName="active" to="/meetings">
             <img src={iconSchedule} className="icon" alt="Schedule"/>
             <span className="name">Schedule</span>
             <span className="counter">{this.props.meetingsCount}</span>

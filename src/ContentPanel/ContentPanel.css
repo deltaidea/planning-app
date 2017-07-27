@@ -1,0 +1,23 @@
+.content-panel {
+  padding: 30px;
+}
+
+.content-panel:first-of-type:not(:last-of-type) {
+  border-right: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.content-panel:not(:first-of-type), .content-panel:only-of-type {
+  flex: 1;
+}
+
+.content-panel > .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 18px;
+  color: rgba(0, 0, 0, 0.64);
+}
+
+.content-panel > .content {
+  padding-top: 20px;
+}
