@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
-import { parseDate, formatMoment } from '../../redux/calendar';
+import { parseDate, formatMoment, getTodayDate } from '../../redux/calendar';
 
 import './CalendarPanel.css';
 import iconArrowLeft from './icon-arrow-left.png'
@@ -16,10 +16,6 @@ export default class CalendarPanel extends Component {
     return this.props.calendar.selectedDate;
   }
 
-  getTodayDate() {
-    return this.props.calendar.todayDate;
-  }
-
   getMonthBoundaries(date) {
     return {
       start: parseDate(date).startOf('month').startOf('week'),
@@ -31,7 +27,7 @@ export default class CalendarPanel extends Component {
     return (
       <td onClick={() => this.props.goToDate(day)} className={classNames({
         'busy': this.props.meetings.some(x => x.date === formatMoment(day)),
-        'highlighted today': this.getTodayDate() === formatMoment(day),
+        'highlighted today': getTodayDate() === formatMoment(day),
         'highlighted selected': this.getDate() === formatMoment(day),
         'other-month': parseDate(this.getDate()).month() !== day.month()
       })}>{day.date()}</td>
