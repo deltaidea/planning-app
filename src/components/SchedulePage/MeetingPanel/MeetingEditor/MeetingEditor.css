@@ -19,7 +19,7 @@
 .meeting-editor textarea { flex: 1; }
 
 .meeting-editor .form-buttons {
-  margin-top: 30px;
+  margin-top: 20px;
   text-align: right;
 }
 
@@ -27,7 +27,7 @@
   margin-left: 10px;
 }
 
-.meeting-editor input.invalid {
+.meeting-editor .invalid {
   border-color: rgba(255, 0, 0, 0.7);
 }
 

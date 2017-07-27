@@ -36,20 +36,32 @@ export default class MeetingEditor extends Component {
   }
 
   changeDescription(description) {
-    this.props.changeValues({ description });
+    const isValid = this.props.currentDescription.trim() !== '';
+    this.props.changeValues({
+      description,
+      isValidDescription: isValid
+    });
   }
 
   save() {
-    if (this.getParticipantId(this.props.currentParticipant) !== null) {
+    let allValid = true;
+
+    if (this.getParticipantId(this.props.currentParticipant) === null) {
+      this.props.changeValues({ isValidParticipant: false });
+      allValid = false;
+    }
+
+    if (this.props.currentDescription.trim() === '') {
+      this.props.changeValues({ isValidDescription: false });
+      allValid = false;
+    }
+
+    if (allValid) {
       this.props.onSave(
         this.props.currentDescription,
         this.getParticipantId(this.props.currentParticipant)
       );
       this.goToMeetingList();
-    } else {
-      this.props.changeValues({
-        isValidParticipant: false
-      })
     }
   }
 
@@ -57,6 +69,7 @@ export default class MeetingEditor extends Component {
     this.props.changeValues({
       description: this.props.description || '',
       participant: this.getParticipantName(this.props.participantId),
+      isValidDescription: true,
       isValidParticipant: true
     });
   }
@@ -88,7 +101,11 @@ export default class MeetingEditor extends Component {
                 rows="3"
                 value={this.props.currentDescription}
                 onChange={event => this.changeDescription(event.target.value)}
+                className={classNames({
+                  invalid: !this.props.isValidParticipant
+                })}
               ></textarea>
+              <div className="error-message">{this.props.isValidDescription ? '' : 'Description is required'}</div>
             </label>
             <div className="form-buttons">
               <SecondaryButton onClick={() => this.goToMeetingList()}>Cancel</SecondaryButton>

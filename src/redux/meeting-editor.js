@@ -1,6 +1,7 @@
 const initialState = {
   description: '',
   participant: '',
+  isValidDescription: true,
   isValidParticipant: true
 };
 

@@ -8,6 +8,7 @@ const mapStateToProps = state => ({
   possibleParticipants: state.clients,
   currentDescription: state.meetingEditor.description,
   currentParticipant: state.meetingEditor.participant,
+  isValidDescription: state.meetingEditor.isValidDescription,
   isValidParticipant: state.meetingEditor.isValidParticipant
 });
 
