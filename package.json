@@ -2,11 +2,12 @@
   "name": "planning-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://deltaidea.github.io/planning-app",
+  "homepage": ".",
   "dependencies": {
     "classnames": "^2.2.5",
     "gh-pages": "^1.0.0",
     "history": "^4.6.3",
+    "http-server": "^0.10.0",
     "lodash": "^4.17.4",
     "moment": "^2.18.1",
     "react": "^15.6.1",
@@ -24,7 +25,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "npm run build && gh-pages -d build",
+    "deploy-github": "npm i && npm run build && gh-pages -d build",
+    "deploy-here": "npm i && npm run build && http-server ./build -o",
     "eject": "react-scripts eject"
   }
 }

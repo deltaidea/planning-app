@@ -7,6 +7,7 @@ const initialState = [
   { id: 5, name: 'Steve Allen' },
 ];
 
+// There're no actions specific to clients. The list is hardcoded.
 export function reducer() {
   return initialState;
 }
