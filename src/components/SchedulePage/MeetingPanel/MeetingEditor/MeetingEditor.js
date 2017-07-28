@@ -36,7 +36,7 @@ export default class MeetingEditor extends Component {
   }
 
   changeDescription(description) {
-    const isValid = this.props.currentDescription.trim() !== '';
+    const isValid = description.trim() !== '';
     this.props.changeValues({
       description,
       isValidDescription: isValid
@@ -102,7 +102,7 @@ export default class MeetingEditor extends Component {
                 value={this.props.currentDescription}
                 onChange={event => this.changeDescription(event.target.value)}
                 className={classNames({
-                  invalid: !this.props.isValidParticipant
+                  invalid: !this.props.isValidDescription
                 })}
               ></textarea>
               <div className="error-message">{this.props.isValidDescription ? '' : 'Description is required'}</div>
